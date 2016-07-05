@@ -19,8 +19,11 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
    
     
     var swiper:KOALSwiper!
+    /// 到第几包数据了
+    var bagN:Int = 0;
     var numInput:Int = 50//输入的条数
-    var bloodType:String = "" //血糖类型
+    /// 血糖类型
+    var bloodType:String = ""
     /// 接收硬件发回来的数据
     var NoticeReturnValue:String?
     /// 第一次发送收到值为1，未收到为0
@@ -179,8 +182,12 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     func delay0x41Method() -> Void {
         
     }
-    
-    
+    func delay0x42Method() -> Void {
+        
+    }
+    func delay0x43Method() -> Void {
+        
+    }
     
     /**
      收/发机制
@@ -210,6 +217,10 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
             nTimer = nil
             return;
         }
+    }
+    
+    func sendaa() -> Void {
+        
     }
     //MARK: - 第二套音频源码交互
     /**
@@ -247,6 +258,22 @@ extension ReadBoxDataController{
             changeStr = utils.stringFromHexStringLK(str! as String)
             analyzingRecorderStrLK.appendString(changeStr! as String)
         }
+    }
+    /**
+     最后弹框提示
+     */
+    func LoopPush() -> Void {
+        
+        nTimer?.invalidate()
+        nTimer=nil
+        
+        isRecive=false;
+        isECK=false;
+        isEnd=false;
+        
+        //首先查询本地数据库，如果数据为0，则提示 “未读取到数据”
+        
+        //如果读取到数据，则提示 "读取到血糖仪数据%lu条，请同步上传" ，点击Alert 则上传服务器
     }
     
 
@@ -287,7 +314,7 @@ extension ReadBoxDataController{
             dispatch_sync(dispatch_get_main_queue(), {
                 if(result == "284429"){
                     //取消执行
-                   self.nTimer?.invalidate()
+                    self.nTimer?.invalidate()
                     self.nTimer = nil
                 }
                 
@@ -309,58 +336,22 @@ extension ReadBoxDataController{
                 //如果是自动识别到血糖仪
                 if(self.isIdentification == 0){
                     if(designator == "Q"){
-                        self.isECK = false
-                        self.isEnd = false
-                        self.xueTangYiType = ""
-                        
-                        //取消执行
-                        self.nTimer?.invalidate()
-                        self.nTimer = nil
-                        
-                        self.GlucoseType = ""
-                        self.reture0X40Value = self.analyzingRecorderStrLK as String
-                        //第一次收到值为true
-                        self.isRecive = true
-                        //分析0x40的数据
-                        self.analyzing0x40Data()
-                        
-                        if(self.GlucoseType != "000"){
-                            //1为读到类型，0为未读到类型
-                            self.isRead = true
-                            self.isRecive = false
-                            self.isIdentification = 0
-                            self.showTipMsg.appendString("已检测到血糖仪...\n")
-                            
-                            self.progressView.progress = 0.1
-                            //发请求
-                            self.vioceDataInteraction()
-                        }else{
-                          self.isRecive = false
-                            self.showTipMsg.appendString("未识别血糖仪，请手动选择...\n")
-                            self.isIdentification = 1
-                            self.isECK=false;
-                            self.isEnd=false;
-                            
-                            //跳转到选择血糖仪的页面
-                        }
-                        
+                        self.executeCommandQ()
                     }
-                    
-                    if(designator == "P"){
-                        self.isRecive = false
-                        //取消执行
-                        self.nTimer?.invalidate()
-                        self.showTipMsg.appendString("手机和盒子正在通讯..\n")
-                        self.progressView.progress = 0.20
-                        
-                        self.conut = 0
-                        //发请求
-                        self.nTimer = NSTimer(timeInterval: 1.5, target: self, selector: #selector(self.delay0x41Method), userInfo: nil, repeats: true)
-                        NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
-                        
-                        self.nTimer?.fire()
-                    }
-                    
+                }
+                
+                if(designator == "P"){
+                    self.executeCommandP()
+                }else if(designator == "A"){
+                    self.executeCommandA()
+                }else if(designator == "E"){
+                    self.executeCommandE()
+                }else if(designator == "B"){
+                    self.executeCommandB()
+                }else if(designator == "C" || designator == "#"){
+                    self.executeCommandC(designator)
+                }else if(result == "284429"){
+                    self.executeCommand284429()
                 }
                 
             })
@@ -500,6 +491,225 @@ extension ReadBoxDataController{
             
         }
     }
+    
+    //MARK: - 执行命令
+    
+    func executeCommandQ() -> Void {
+        self.isECK = false
+        self.isEnd = false
+        self.xueTangYiType = ""
+        
+        //取消执行
+        self.nTimer?.invalidate()
+        self.nTimer = nil
+        
+        self.GlucoseType = ""
+        self.reture0X40Value = self.analyzingRecorderStrLK as String
+        //第一次收到值为true
+        self.isRecive = true
+        //分析0x40的数据
+        self.analyzing0x40Data()
+        
+        if(self.GlucoseType != "000"){
+            //1为读到类型，0为未读到类型
+            self.isRead = true
+            self.isRecive = false
+            self.isIdentification = 0
+            self.showTipMsg.appendString("已检测到血糖仪...\n")
+            
+            self.progressView.progress = 0.1
+            //发请求
+            self.vioceDataInteraction()
+        }else{
+            self.isRecive = false
+            self.showTipMsg.appendString("未识别血糖仪，请手动选择...\n")
+            self.isIdentification = 1
+            self.isECK=false;
+            self.isEnd=false;
+            
+            //跳转到选择血糖仪的页面
+        }
+    }
+    
+    func executeCommandP() -> Void
+    {
+        self.isRecive = false
+        //取消执行
+        self.nTimer?.invalidate()
+        self.nTimer=nil
+        self.showTipMsg.appendString("手机和盒子正在通讯..\n")
+        self.progressView.progress = 0.20
+        
+        self.conut = 0
+        //发请求
+        self.nTimer = NSTimer(timeInterval: 1.5, target: self, selector: #selector(self.delay0x41Method), userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
+        
+        self.nTimer?.fire()
+    }
+    
+    func executeCommandA() -> Void {
+        self.isRecive = false;
+        
+        nTimer?.invalidate()
+        nTimer = nil
+       
+        reture0X41Value = ""
+        reture0X41Value = analyzingRecorderStrLK
+        
+        showTipMsg.appendString("盒子正在读取血糖仪数据中...\n")
+        progressView.progress = 0.30;//
+        //分析0x41的数据
+        analyzing0x41Data()
+    }
+    
+    func executeCommandE() -> Void {
+        if (self.isECK==true) {
+            return;
+        }
+        isECK=true;
+        
+        isRecive=false;
+        
+        retureECK=analyzingRecorderStrLK;
+        
+        showTipMsg.appendString("数据上传中...\n")
+        
+        progressView.progress = 0.40;//
+        
+        analyzingECK()
+        conut=0;
+       
+        self.nTimer = NSTimer(timeInterval: 1.7, target: self, selector: #selector(self.delay0x42Method), userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
+        
+        self.nTimer?.fire()
+    }
+    
+    func executeCommandB() -> Void {
+        //第一次发送收到值为1，未收到为0
+        isRecive=false;
+        //取消执行
+        nTimer?.invalidate()
+        nTimer = nil
+        //获取解析后得到的字符串 （命令执行符号）
+        reture0X42Value=analyzingRecorderStrLK;
+        showTipMsg.appendString("读取数据中........\n")
+        progressView.progress = 0.50;//
+        //分析0x42的数据
+        analyzing0x42Data()
+        
+        if(statuOfGlucoseMeterLK == "0" || statuOfGlucoseMeterLK==nil || statuOfGlucoseMeterLK == ""){
+            //设置为自动获取血糖仪类型
+            isIdentification = 0
+            
+            showAlert("抱歉", msg: "未识别血糖仪，手动选择后重试...")
+            return
+        }else
+        {
+            isRecive=false;
+            conut=0;
+            bagN=1;
+            
+            self.nTimer = NSTimer(timeInterval: 2.8, target: self, selector: #selector(self.delay0x43Method), userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
+            
+            self.nTimer?.fire()
+        }
+
+    }
+    /**
+     盒子关机
+     */
+    func executeCommand284429() -> Void {
+        
+        nTimer?.invalidate()
+        nTimer = nil
+       
+        
+        if (isEnd==true) {
+            return;
+        }
+        isEnd=true;
+    
+        showTipMsg.appendString("盒子已关机\n")
+        nTimer?.invalidate()
+        nTimer = nil
+    }
+    
+    /**
+     命令操作符  #代表结束
+     
+     - parameter designator: 命令操作符
+     */
+    func executeCommandC(designator:String) -> Void {
+        isRecive=false;
+        
+        //取消执行
+        nTimer?.invalidate()
+        nTimer = nil
+        reture0X43Value="";//
+        let bagNumS = analyzingRecorderStrLK.substringWithRange(NSMakeRange(1, 2))
+        //0x43返回来的值
+        reture0X43Value=analyzingRecorderStrLK;
+        if ((reture0X43Value as! String).isEmpty == true) {
+            
+            var bagNumber = Int(bagNumS)
+            
+            if(bagNumber != bagN)
+            {
+                nTimer?.invalidate()
+                nTimer = nil
+                
+                isRecive=false;
+                conut=0;
+                
+                self.nTimer = NSTimer(timeInterval: 2.5, target: self, selector: #selector(self.delay0x43Method), userInfo: nil, repeats: true)
+                NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
+                
+                self.nTimer?.fire()
+                
+            }else{
+                
+                var floatBage = Float(bagNumS)! / 10
+                if (floatBage>=0.5) {
+                    floatBage=0.4+floatBage/10;
+                }
+                
+                progressView.progress = 0.50 + CGFloat(floatBage);
+                
+                //影响C02以后的时间 分析解析数据
+                analyzing0x43Data()
+                
+                if (designator == "#") {
+                    // 是＃结束
+                    
+                    if (DateMuArr.count != 0) {
+                        nTimer?.invalidate()
+                        nTimer = nil
+                        
+                        sendEnd()
+                        self.performSelector(#selector(sendEnd), withObject: self, afterDelay: 1.5)
+                        
+                        progressView.progress = 1.0;
+                        
+                        self.performSelector(#selector(LoopPush), withObject: self, afterDelay: 3)
+                        nTimer?.invalidate()
+                        nTimer = nil;//取消执行
+                        return;
+                    }
+                } else {
+                    bagN += 1
+                    isRecive=false;
+                    conut=0;
+                    
+                    delay0x43Method()
+                    self.performSelector(#selector(sendaa), withObject: nil, afterDelay: 1 )
+                }
+            }
+        }
+    }
+    
     
     
     func showAlert(title:String,msg:String) -> Void {
