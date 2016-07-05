@@ -15,4 +15,6 @@
 #import "KOALSwiperUtil.h"
 #import "KOALSwiperDelegate.h"
 
+#import "NNIT_Utils.h"
+
 #endif /* HeaderBridge_h */

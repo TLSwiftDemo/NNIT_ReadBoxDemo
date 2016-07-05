@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
 
    
@@ -17,10 +20,15 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     var bloodType:String = "" //血糖类型
     /// 接收硬件发回来的数据
     var NoticeReturnValue:String?
+    /// 第一次发送收到值为1，未收到为0
+    var isRecive:Bool = false
+    
+    /// 血糖仪类型
+    var xueTangYiType:String = ""
     
     
     //MARK: - 音频数据
-    var noticeReturnValueLK:String?;//接收硬件发回来的数据
+    var noticeReturnValueLK:NSString?;//接收硬件发回来的数据
     var reture0X40Value:String?;//0x40返回来的值
     var reture0X41Value:String?;//0x41
     var retureECK:String?;
@@ -28,7 +36,7 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     var reture0X43Value:String?;//0x43
     
     /// 解析后数据（去（）截字符再转型最终得到的数据
-    var analyzingRecorderStrLK:String?
+    var analyzingRecorderStrLK:NSMutableString =  NSMutableString()
     
     
     //发送0x40的解析数据
@@ -65,6 +73,15 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     
     var totalMutableArray:NSMutableArray = NSMutableArray()
     
+    /// 0为自动识别到血糖仪类型，1为未识别跳转选择页面
+    var isIdentification:Int = 0;
+    /// 成功同步的条数
+    var successNum:Int!;
+    
+    
+    var isECK:Bool = false
+    var isEnd:Bool = false
+    var isBag:Bool = false
     
   
     override func viewDidLoad() {
@@ -124,6 +141,35 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
 
 }
 
+extension ReadBoxDataController{
+  //MARK: - Help methods
+    /**
+     将整串字符串分割成每两个字符一个字节
+     
+     - parameter strUrl:
+     */
+    func CutTwoStrLK(strUrl:NSString) -> Void {
+        
+        var str:NSString?
+        var changeStr:NSString?
+        
+        let utils = NNIT_Utils()
+        
+        for item in 0..<(strUrl.length)/2 {
+            
+            str = strUrl.substringWithRange(NSMakeRange(item*2, 2))
+            //16进制转字符串
+            changeStr = utils.stringFromHexStringLK(str! as String)
+            analyzingRecorderStrLK.appendString(changeStr! as String)
+        }
+    }
+    
+
+    
+    
+    
+}
+
 
 extension ReadBoxDataController{
     //MARK: - KOALSwiperDelegate
@@ -144,11 +190,51 @@ extension ReadBoxDataController{
     //写数据成功
     func writeCustomDataSuccessful() {
         print("写数据成功了")
+        
+        
     }
     
     //成功读取自定义数据
     func swiperDidObtianCustomData(result: String!) {
         print("成功读取自定义数据:\(result)")
+        sendData("40")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            dispatch_sync(dispatch_get_main_queue(), {
+                if(result == "284429"){
+                    //取消执行
+                  self.nTimer?.invalidate()
+                }
+                
+                if(self.isRecive == true){
+                  return
+                }
+                
+                //接收硬件发回来的数据
+                self.noticeReturnValueLK = result
+                let range = NSMakeRange(2, self.noticeReturnValueLK!.length - 4);
+                
+                let strUrl = self.noticeReturnValueLK?.substringWithRange(range)
+                //将整串字符串分割成每两个字符一个字节
+                self.CutTwoStrLK(strUrl!)
+                
+                /// 解析完的字节码
+                let designator = self.analyzingRecorderStrLK.substringWithRange(NSMakeRange(0, 1));
+                
+                //如果是自动识别到血糖仪
+                if(self.isIdentification == 0){
+                    if(designator == "Q"){
+                        self.isECK = false
+                        self.isEnd = false
+                        self.xueTangYiType = ""
+                        
+                        //取消执行
+                        self.nTimer?.invalidate()
+                        self.nTimer = nil
+                    }
+                }
+                
+            })
+        }
     }
     
     func sdkThrowException(e: NSException!, errorMessage errorMsg: String!) {

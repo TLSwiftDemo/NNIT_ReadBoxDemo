@@ -23,6 +23,7 @@
 		49F9EB2D1D2B5F360047FFBB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB2C1D2B5F360047FFBB /* AVFoundation.framework */; };
 		49F9EB2F1D2B5F410047FFBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB2E1D2B5F410047FFBB /* MobileCoreServices.framework */; };
 		49F9EB311D2B5F5F0047FFBB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */; };
+		49F9EB361D2B92630047FFBB /* NNIT_Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB351D2B92630047FFBB /* NNIT_Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		49F9EB2C1D2B5F360047FFBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		49F9EB2E1D2B5F410047FFBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		49F9EB341D2B92630047FFBB /* NNIT_Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNIT_Utils.h; sourceTree = "<group>"; };
+		49F9EB351D2B92630047FFBB /* NNIT_Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNIT_Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				49F9EAFE1D2B5C9F0047FFBB /* Assets.xcassets */,
 				49F9EB001D2B5C9F0047FFBB /* LaunchScreen.storyboard */,
 				49F9EB031D2B5C9F0047FFBB /* Info.plist */,
+				49F9EB341D2B92630047FFBB /* NNIT_Utils.h */,
+				49F9EB351D2B92630047FFBB /* NNIT_Utils.m */,
 			);
 			path = NNIT_ReadBoxDemo;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F9EB361D2B92630047FFBB /* NNIT_Utils.m in Sources */,
 				49F9EAFA1D2B5C9F0047FFBB /* ViewController.swift in Sources */,
 				49F9EB221D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */,
 				49F9EAF81D2B5C9F0047FFBB /* AppDelegate.swift in Sources */,
