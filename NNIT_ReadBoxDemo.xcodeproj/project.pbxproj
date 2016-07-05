@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49F9EAF81D2B5C9F0047FFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */; };
+		49F9EAFA1D2B5C9F0047FFBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */; };
+		49F9EAFD1D2B5C9F0047FFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EAFB1D2B5C9F0047FFBB /* Main.storyboard */; };
+		49F9EAFF1D2B5C9F0047FFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EAFE1D2B5C9F0047FFBB /* Assets.xcassets */; };
+		49F9EB021D2B5C9F0047FFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EB001D2B5C9F0047FFBB /* LaunchScreen.storyboard */; };
+		49F9EB0D1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB0C1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift */; };
+		49F9EB1F1D2B5CC60047FFBB /* libKOALSwiperSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */; };
+		49F9EB221D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */; };
+		49F9EB231D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */; };
+		49F9EB251D2B5EFD0047FFBB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB241D2B5EFD0047FFBB /* AudioToolbox.framework */; };
+		49F9EB271D2B5F0D0047FFBB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB261D2B5F0D0047FFBB /* MediaPlayer.framework */; };
+		49F9EB291D2B5F1C0047FFBB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB281D2B5F1C0047FFBB /* CoreMedia.framework */; };
+		49F9EB2B1D2B5F260047FFBB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB2A1D2B5F260047FFBB /* CoreVideo.framework */; };
+		49F9EB2D1D2B5F360047FFBB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB2C1D2B5F360047FFBB /* AVFoundation.framework */; };
+		49F9EB2F1D2B5F410047FFBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB2E1D2B5F410047FFBB /* MobileCoreServices.framework */; };
+		49F9EB311D2B5F5F0047FFBB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49F9EB091D2B5C9F0047FFBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49F9EAEC1D2B5C9F0047FFBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49F9EAF31D2B5C9F0047FFBB;
+			remoteInfo = NNIT_ReadBoxDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49F9EAF41D2B5C9F0047FFBB /* NNIT_ReadBoxDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NNIT_ReadBoxDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49F9EAFC1D2B5C9F0047FFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49F9EAFE1D2B5C9F0047FFBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49F9EB011D2B5C9F0047FFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49F9EB031D2B5C9F0047FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F9EB081D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NNIT_ReadBoxDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F9EB0C1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNIT_ReadBoxDemoTests.swift; sourceTree = "<group>"; };
+		49F9EB0E1D2B5C9F0047FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F9EB181D2B5CC60047FFBB /* KOALObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALObject.h; sourceTree = "<group>"; };
+		49F9EB191D2B5CC60047FFBB /* KOALSwiperUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperUtil.h; sourceTree = "<group>"; };
+		49F9EB1A1D2B5CC60047FFBB /* KOALSampleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSampleUtil.h; sourceTree = "<group>"; };
+		49F9EB1B1D2B5CC60047FFBB /* KOALSwiper+KOALSwiperApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KOALSwiper+KOALSwiperApi.h"; sourceTree = "<group>"; };
+		49F9EB1C1D2B5CC60047FFBB /* KOALSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiper.h; sourceTree = "<group>"; };
+		49F9EB1D1D2B5CC60047FFBB /* KOALSwiperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperDelegate.h; sourceTree = "<group>"; };
+		49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKOALSwiperSDK.a; sourceTree = "<group>"; };
+		49F9EB201D2B5CE40047FFBB /* HeaderBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderBridge.h; sourceTree = "<group>"; };
+		49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadBoxDataController.swift; path = ../ReadBoxDataController.swift; sourceTree = "<group>"; };
+		49F9EB241D2B5EFD0047FFBB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		49F9EB261D2B5F0D0047FFBB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		49F9EB281D2B5F1C0047FFBB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		49F9EB2A1D2B5F260047FFBB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		49F9EB2C1D2B5F360047FFBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		49F9EB2E1D2B5F410047FFBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49F9EAF11D2B5C9F0047FFBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F9EB311D2B5F5F0047FFBB /* libstdc++.tbd in Frameworks */,
+				49F9EB2F1D2B5F410047FFBB /* MobileCoreServices.framework in Frameworks */,
+				49F9EB2D1D2B5F360047FFBB /* AVFoundation.framework in Frameworks */,
+				49F9EB2B1D2B5F260047FFBB /* CoreVideo.framework in Frameworks */,
+				49F9EB291D2B5F1C0047FFBB /* CoreMedia.framework in Frameworks */,
+				49F9EB271D2B5F0D0047FFBB /* MediaPlayer.framework in Frameworks */,
+				49F9EB251D2B5EFD0047FFBB /* AudioToolbox.framework in Frameworks */,
+				49F9EB1F1D2B5CC60047FFBB /* libKOALSwiperSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49F9EB051D2B5C9F0047FFBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49F9EAEB1D2B5C9F0047FFBB = {
+			isa = PBXGroup;
+			children = (
+				49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */,
+				49F9EB2E1D2B5F410047FFBB /* MobileCoreServices.framework */,
+				49F9EB2C1D2B5F360047FFBB /* AVFoundation.framework */,
+				49F9EB2A1D2B5F260047FFBB /* CoreVideo.framework */,
+				49F9EB281D2B5F1C0047FFBB /* CoreMedia.framework */,
+				49F9EB261D2B5F0D0047FFBB /* MediaPlayer.framework */,
+				49F9EB241D2B5EFD0047FFBB /* AudioToolbox.framework */,
+				49F9EAF61D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */,
+				49F9EB0B1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests */,
+				49F9EAF51D2B5C9F0047FFBB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49F9EAF51D2B5C9F0047FFBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49F9EAF41D2B5C9F0047FFBB /* NNIT_ReadBoxDemo.app */,
+				49F9EB081D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49F9EAF61D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */ = {
+			isa = PBXGroup;
+			children = (
+				49F9EB171D2B5CB10047FFBB /* KOASdk */,
+				49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */,
+				49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */,
+				49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */,
+				49F9EAFB1D2B5C9F0047FFBB /* Main.storyboard */,
+				49F9EB201D2B5CE40047FFBB /* HeaderBridge.h */,
+				49F9EAFE1D2B5C9F0047FFBB /* Assets.xcassets */,
+				49F9EB001D2B5C9F0047FFBB /* LaunchScreen.storyboard */,
+				49F9EB031D2B5C9F0047FFBB /* Info.plist */,
+			);
+			path = NNIT_ReadBoxDemo;
+			sourceTree = "<group>";
+		};
+		49F9EB0B1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				49F9EB0C1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift */,
+				49F9EB0E1D2B5C9F0047FFBB /* Info.plist */,
+			);
+			path = NNIT_ReadBoxDemoTests;
+			sourceTree = "<group>";
+		};
+		49F9EB171D2B5CB10047FFBB /* KOASdk */ = {
+			isa = PBXGroup;
+			children = (
+				49F9EB181D2B5CC60047FFBB /* KOALObject.h */,
+				49F9EB191D2B5CC60047FFBB /* KOALSwiperUtil.h */,
+				49F9EB1A1D2B5CC60047FFBB /* KOALSampleUtil.h */,
+				49F9EB1B1D2B5CC60047FFBB /* KOALSwiper+KOALSwiperApi.h */,
+				49F9EB1C1D2B5CC60047FFBB /* KOALSwiper.h */,
+				49F9EB1D1D2B5CC60047FFBB /* KOALSwiperDelegate.h */,
+				49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */,
+			);
+			name = KOASdk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49F9EAF31D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49F9EB111D2B5C9F0047FFBB /* Build configuration list for PBXNativeTarget "NNIT_ReadBoxDemo" */;
+			buildPhases = (
+				49F9EAF01D2B5C9F0047FFBB /* Sources */,
+				49F9EAF11D2B5C9F0047FFBB /* Frameworks */,
+				49F9EAF21D2B5C9F0047FFBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NNIT_ReadBoxDemo;
+			productName = NNIT_ReadBoxDemo;
+			productReference = 49F9EAF41D2B5C9F0047FFBB /* NNIT_ReadBoxDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		49F9EB071D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49F9EB141D2B5C9F0047FFBB /* Build configuration list for PBXNativeTarget "NNIT_ReadBoxDemoTests" */;
+			buildPhases = (
+				49F9EB041D2B5C9F0047FFBB /* Sources */,
+				49F9EB051D2B5C9F0047FFBB /* Frameworks */,
+				49F9EB061D2B5C9F0047FFBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49F9EB0A1D2B5C9F0047FFBB /* PBXTargetDependency */,
+			);
+			name = NNIT_ReadBoxDemoTests;
+			productName = NNIT_ReadBoxDemoTests;
+			productReference = 49F9EB081D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49F9EAEC1D2B5C9F0047FFBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Andrew;
+				TargetAttributes = {
+					49F9EAF31D2B5C9F0047FFBB = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					49F9EB071D2B5C9F0047FFBB = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 49F9EAF31D2B5C9F0047FFBB;
+					};
+				};
+			};
+			buildConfigurationList = 49F9EAEF1D2B5C9F0047FFBB /* Build configuration list for PBXProject "NNIT_ReadBoxDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49F9EAEB1D2B5C9F0047FFBB;
+			productRefGroup = 49F9EAF51D2B5C9F0047FFBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49F9EAF31D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */,
+				49F9EB071D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49F9EAF21D2B5C9F0047FFBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F9EB021D2B5C9F0047FFBB /* LaunchScreen.storyboard in Resources */,
+				49F9EAFF1D2B5C9F0047FFBB /* Assets.xcassets in Resources */,
+				49F9EAFD1D2B5C9F0047FFBB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49F9EB061D2B5C9F0047FFBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49F9EAF01D2B5C9F0047FFBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F9EAFA1D2B5C9F0047FFBB /* ViewController.swift in Sources */,
+				49F9EB221D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */,
+				49F9EAF81D2B5C9F0047FFBB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49F9EB041D2B5C9F0047FFBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F9EB0D1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift in Sources */,
+				49F9EB231D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49F9EB0A1D2B5C9F0047FFBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49F9EAF31D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */;
+			targetProxy = 49F9EB091D2B5C9F0047FFBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49F9EAFB1D2B5C9F0047FFBB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49F9EAFC1D2B5C9F0047FFBB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49F9EB001D2B5C9F0047FFBB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49F9EB011D2B5C9F0047FFBB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49F9EB0F1D2B5C9F0047FFBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49F9EB101D2B5C9F0047FFBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49F9EB121D2B5C9F0047FFBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NNIT_ReadBoxDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NNIT_ReadBoxDemo",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tongli.NNIT-ReadBoxDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Andrew/GitLab/GIT/TLSwiftDemo/NNIT_ReadBoxDemo/NNIT_ReadBoxDemo/HeaderBridge.h;
+			};
+			name = Debug;
+		};
+		49F9EB131D2B5C9F0047FFBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NNIT_ReadBoxDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NNIT_ReadBoxDemo",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tongli.NNIT-ReadBoxDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Andrew/GitLab/GIT/TLSwiftDemo/NNIT_ReadBoxDemo/NNIT_ReadBoxDemo/HeaderBridge.h;
+			};
+			name = Release;
+		};
+		49F9EB151D2B5C9F0047FFBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NNIT_ReadBoxDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tongli.NNIT-ReadBoxDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NNIT_ReadBoxDemo.app/NNIT_ReadBoxDemo";
+			};
+			name = Debug;
+		};
+		49F9EB161D2B5C9F0047FFBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NNIT_ReadBoxDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tongli.NNIT-ReadBoxDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NNIT_ReadBoxDemo.app/NNIT_ReadBoxDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49F9EAEF1D2B5C9F0047FFBB /* Build configuration list for PBXProject "NNIT_ReadBoxDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49F9EB0F1D2B5C9F0047FFBB /* Debug */,
+				49F9EB101D2B5C9F0047FFBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49F9EB111D2B5C9F0047FFBB /* Build configuration list for PBXNativeTarget "NNIT_ReadBoxDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49F9EB121D2B5C9F0047FFBB /* Debug */,
+				49F9EB131D2B5C9F0047FFBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49F9EB141D2B5C9F0047FFBB /* Build configuration list for PBXNativeTarget "NNIT_ReadBoxDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49F9EB151D2B5C9F0047FFBB /* Debug */,
+				49F9EB161D2B5C9F0047FFBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49F9EAEC1D2B5C9F0047FFBB /* Project object */;
+}
