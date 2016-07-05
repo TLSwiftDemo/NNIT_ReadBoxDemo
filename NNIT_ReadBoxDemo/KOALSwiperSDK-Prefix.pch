@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'KOALSwiperSDK' target in the 'KOALSwiperSDK' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
+#ifdef DEBUG
+#define DebugLog(...) NSLog(__VA_ARGS__)
+#else
+#define DebugLog(...) while(0)
+#endif

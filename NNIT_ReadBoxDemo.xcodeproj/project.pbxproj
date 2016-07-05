@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175E5DC88E0708A4F723F11D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F553425ECC19B4ED5691E05 /* Pods.framework */; };
+		49E8D9C51D2BEE9200340D00 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E8D9C21D2BEE9200340D00 /* LDProgressView.m */; };
+		49E8D9C61D2BEE9200340D00 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E8D9C41D2BEE9200340D00 /* UIColor+RGBValues.m */; };
+		49E8D9D81D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49E8D9CF1D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.mm */; };
+		49E8D9D91D2BF79C00340D00 /* libKOALSwiperSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E8D9D51D2BF79C00340D00 /* libKOALSwiperSDK.a */; };
 		49F9EAF81D2B5C9F0047FFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */; };
 		49F9EAFA1D2B5C9F0047FFBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */; };
 		49F9EAFD1D2B5C9F0047FFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EAFB1D2B5C9F0047FFBB /* Main.storyboard */; };
 		49F9EAFF1D2B5C9F0047FFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EAFE1D2B5C9F0047FFBB /* Assets.xcassets */; };
 		49F9EB021D2B5C9F0047FFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F9EB001D2B5C9F0047FFBB /* LaunchScreen.storyboard */; };
 		49F9EB0D1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB0C1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift */; };
-		49F9EB1F1D2B5CC60047FFBB /* libKOALSwiperSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */; };
 		49F9EB221D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */; };
 		49F9EB231D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */; };
 		49F9EB251D2B5EFD0047FFBB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F9EB241D2B5EFD0047FFBB /* AudioToolbox.framework */; };
@@ -37,6 +41,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49E8D9C11D2BEE9200340D00 /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
+		49E8D9C21D2BEE9200340D00 /* LDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDProgressView.m; sourceTree = "<group>"; };
+		49E8D9C31D2BEE9200340D00 /* UIColor+RGBValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBValues.h"; sourceTree = "<group>"; };
+		49E8D9C41D2BEE9200340D00 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
+		49E8D9C91D2BF79C00340D00 /* KOALAudioAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALAudioAdapter.h; sourceTree = "<group>"; };
+		49E8D9CA1D2BF79C00340D00 /* KOALCommandBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALCommandBundle.h; sourceTree = "<group>"; };
+		49E8D9CB1D2BF79C00340D00 /* KOALObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALObject.h; sourceTree = "<group>"; };
+		49E8D9CC1D2BF79C00340D00 /* KOALSampleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSampleUtil.h; sourceTree = "<group>"; };
+		49E8D9CD1D2BF79C00340D00 /* KOALSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiper.h; sourceTree = "<group>"; };
+		49E8D9CE1D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KOALSwiper+KOALSwiperApi.h"; sourceTree = "<group>"; };
+		49E8D9CF1D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "KOALSwiper+KOALSwiperApi.mm"; sourceTree = "<group>"; };
+		49E8D9D01D2BF79C00340D00 /* KOALSwiperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperDelegate.h; sourceTree = "<group>"; };
+		49E8D9D11D2BF79C00340D00 /* KOALSwiperSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KOALSwiperSample-Prefix.pch"; sourceTree = "<group>"; };
+		49E8D9D21D2BF79C00340D00 /* KOALSwiperSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KOALSwiperSDK-Prefix.pch"; sourceTree = "<group>"; };
+		49E8D9D31D2BF79C00340D00 /* KOALSwiperSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperSDK.h; sourceTree = "<group>"; };
+		49E8D9D41D2BF79C00340D00 /* KOALSwiperUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperUtil.h; sourceTree = "<group>"; };
+		49E8D9D51D2BF79C00340D00 /* libKOALSwiperSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKOALSwiperSDK.a; sourceTree = "<group>"; };
+		49E8D9DB1D2BF7EF00340D00 /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQPlayer.h; path = AQProcessor/AQPlayer.h; sourceTree = "<group>"; };
+		49E8D9DC1D2BF7EF00340D00 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQRecorder.h; path = AQProcessor/AQRecorder.h; sourceTree = "<group>"; };
+		49E8D9DD1D2BF7FB00340D00 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADebugMacros.h; path = iPublicUtility/CADebugMacros.h; sourceTree = "<group>"; };
+		49E8D9DE1D2BF7FB00340D00 /* CADebugPrintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADebugPrintf.h; path = iPublicUtility/CADebugPrintf.h; sourceTree = "<group>"; };
+		49E8D9DF1D2BF7FB00340D00 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAMath.h; path = iPublicUtility/CAMath.h; sourceTree = "<group>"; };
+		49E8D9E01D2BF7FB00340D00 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAStreamBasicDescription.h; path = iPublicUtility/CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		49E8D9E11D2BF7FB00340D00 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAXException.h; path = iPublicUtility/CAXException.h; sourceTree = "<group>"; };
 		49F9EAF41D2B5C9F0047FFBB /* NNIT_ReadBoxDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NNIT_ReadBoxDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,13 +75,6 @@
 		49F9EB081D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NNIT_ReadBoxDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F9EB0C1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNIT_ReadBoxDemoTests.swift; sourceTree = "<group>"; };
 		49F9EB0E1D2B5C9F0047FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49F9EB181D2B5CC60047FFBB /* KOALObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALObject.h; sourceTree = "<group>"; };
-		49F9EB191D2B5CC60047FFBB /* KOALSwiperUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperUtil.h; sourceTree = "<group>"; };
-		49F9EB1A1D2B5CC60047FFBB /* KOALSampleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSampleUtil.h; sourceTree = "<group>"; };
-		49F9EB1B1D2B5CC60047FFBB /* KOALSwiper+KOALSwiperApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KOALSwiper+KOALSwiperApi.h"; sourceTree = "<group>"; };
-		49F9EB1C1D2B5CC60047FFBB /* KOALSwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiper.h; sourceTree = "<group>"; };
-		49F9EB1D1D2B5CC60047FFBB /* KOALSwiperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOALSwiperDelegate.h; sourceTree = "<group>"; };
-		49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libKOALSwiperSDK.a; sourceTree = "<group>"; };
 		49F9EB201D2B5CE40047FFBB /* HeaderBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderBridge.h; sourceTree = "<group>"; };
 		49F9EB211D2B5D1D0047FFBB /* ReadBoxDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadBoxDataController.swift; path = ../ReadBoxDataController.swift; sourceTree = "<group>"; };
 		49F9EB241D2B5EFD0047FFBB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -65,6 +86,9 @@
 		49F9EB301D2B5F5F0047FFBB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		49F9EB341D2B92630047FFBB /* NNIT_Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNIT_Utils.h; sourceTree = "<group>"; };
 		49F9EB351D2B92630047FFBB /* NNIT_Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNIT_Utils.m; sourceTree = "<group>"; };
+		8543B819DDCAF171465E7B42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9F553425ECC19B4ED5691E05 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8867C6571E59A68B41179D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +103,8 @@
 				49F9EB291D2B5F1C0047FFBB /* CoreMedia.framework in Frameworks */,
 				49F9EB271D2B5F0D0047FFBB /* MediaPlayer.framework in Frameworks */,
 				49F9EB251D2B5EFD0047FFBB /* AudioToolbox.framework in Frameworks */,
-				49F9EB1F1D2B5CC60047FFBB /* libKOALSwiperSDK.a in Frameworks */,
+				49E8D9D91D2BF79C00340D00 /* libKOALSwiperSDK.a in Frameworks */,
+				175E5DC88E0708A4F723F11D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +118,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41B0BAE70B194D0740742964 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD8867C6571E59A68B41179D /* Pods.debug.xcconfig */,
+				8543B819DDCAF171465E7B42 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		49E8D9C01D2BEE8A00340D00 /* 进度条 */ = {
+			isa = PBXGroup;
+			children = (
+				49E8D9C11D2BEE9200340D00 /* LDProgressView.h */,
+				49E8D9C21D2BEE9200340D00 /* LDProgressView.m */,
+				49E8D9C31D2BEE9200340D00 /* UIColor+RGBValues.h */,
+				49E8D9C41D2BEE9200340D00 /* UIColor+RGBValues.m */,
+			);
+			name = "进度条";
+			sourceTree = "<group>";
+		};
 		49F9EAEB1D2B5C9F0047FFBB = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +151,8 @@
 				49F9EAF61D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */,
 				49F9EB0B1D2B5C9F0047FFBB /* NNIT_ReadBoxDemoTests */,
 				49F9EAF51D2B5C9F0047FFBB /* Products */,
+				41B0BAE70B194D0740742964 /* Pods */,
+				ADF26E86EC77031CB4201335 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +168,7 @@
 		49F9EAF61D2B5C9F0047FFBB /* NNIT_ReadBoxDemo */ = {
 			isa = PBXGroup;
 			children = (
+				49E8D9C01D2BEE8A00340D00 /* 进度条 */,
 				49F9EB171D2B5CB10047FFBB /* KOASdk */,
 				49F9EAF71D2B5C9F0047FFBB /* AppDelegate.swift */,
 				49F9EAF91D2B5C9F0047FFBB /* ViewController.swift */,
@@ -148,15 +196,36 @@
 		49F9EB171D2B5CB10047FFBB /* KOASdk */ = {
 			isa = PBXGroup;
 			children = (
-				49F9EB181D2B5CC60047FFBB /* KOALObject.h */,
-				49F9EB191D2B5CC60047FFBB /* KOALSwiperUtil.h */,
-				49F9EB1A1D2B5CC60047FFBB /* KOALSampleUtil.h */,
-				49F9EB1B1D2B5CC60047FFBB /* KOALSwiper+KOALSwiperApi.h */,
-				49F9EB1C1D2B5CC60047FFBB /* KOALSwiper.h */,
-				49F9EB1D1D2B5CC60047FFBB /* KOALSwiperDelegate.h */,
-				49F9EB1E1D2B5CC60047FFBB /* libKOALSwiperSDK.a */,
+				49E8D9DD1D2BF7FB00340D00 /* CADebugMacros.h */,
+				49E8D9DE1D2BF7FB00340D00 /* CADebugPrintf.h */,
+				49E8D9DF1D2BF7FB00340D00 /* CAMath.h */,
+				49E8D9E01D2BF7FB00340D00 /* CAStreamBasicDescription.h */,
+				49E8D9E11D2BF7FB00340D00 /* CAXException.h */,
+				49E8D9DB1D2BF7EF00340D00 /* AQPlayer.h */,
+				49E8D9DC1D2BF7EF00340D00 /* AQRecorder.h */,
+				49E8D9C91D2BF79C00340D00 /* KOALAudioAdapter.h */,
+				49E8D9CA1D2BF79C00340D00 /* KOALCommandBundle.h */,
+				49E8D9CB1D2BF79C00340D00 /* KOALObject.h */,
+				49E8D9CC1D2BF79C00340D00 /* KOALSampleUtil.h */,
+				49E8D9CD1D2BF79C00340D00 /* KOALSwiper.h */,
+				49E8D9CE1D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.h */,
+				49E8D9CF1D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.mm */,
+				49E8D9D01D2BF79C00340D00 /* KOALSwiperDelegate.h */,
+				49E8D9D11D2BF79C00340D00 /* KOALSwiperSample-Prefix.pch */,
+				49E8D9D21D2BF79C00340D00 /* KOALSwiperSDK-Prefix.pch */,
+				49E8D9D31D2BF79C00340D00 /* KOALSwiperSDK.h */,
+				49E8D9D41D2BF79C00340D00 /* KOALSwiperUtil.h */,
+				49E8D9D51D2BF79C00340D00 /* libKOALSwiperSDK.a */,
 			);
 			name = KOASdk;
+			sourceTree = "<group>";
+		};
+		ADF26E86EC77031CB4201335 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F553425ECC19B4ED5691E05 /* Pods.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49F9EB111D2B5C9F0047FFBB /* Build configuration list for PBXNativeTarget "NNIT_ReadBoxDemo" */;
 			buildPhases = (
+				04DD2EB10CECA5B6EF5BA893 /* Check Pods Manifest.lock */,
 				49F9EAF01D2B5C9F0047FFBB /* Sources */,
 				49F9EAF11D2B5C9F0047FFBB /* Frameworks */,
 				49F9EAF21D2B5C9F0047FFBB /* Resources */,
+				99B83EF5E736C4B8C87B0E31 /* Embed Pods Frameworks */,
+				0E9219F80C59073E1467B86E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,14 +327,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04DD2EB10CECA5B6EF5BA893 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0E9219F80C59073E1467B86E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99B83EF5E736C4B8C87B0E31 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		49F9EAF01D2B5C9F0047FFBB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				49F9EB361D2B92630047FFBB /* NNIT_Utils.m in Sources */,
+				49E8D9C61D2BEE9200340D00 /* UIColor+RGBValues.m in Sources */,
+				49E8D9D81D2BF79C00340D00 /* KOALSwiper+KOALSwiperApi.mm in Sources */,
 				49F9EAFA1D2B5C9F0047FFBB /* ViewController.swift in Sources */,
 				49F9EB221D2B5D1D0047FFBB /* ReadBoxDataController.swift in Sources */,
+				49E8D9C51D2BEE9200340D00 /* LDProgressView.m in Sources */,
 				49F9EAF81D2B5C9F0047FFBB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +514,7 @@
 		};
 		49F9EB121D2B5C9F0047FFBB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD8867C6571E59A68B41179D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NNIT_ReadBoxDemo/Info.plist;
@@ -408,6 +532,7 @@
 		};
 		49F9EB131D2B5C9F0047FFBB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8543B819DDCAF171465E7B42 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NNIT_ReadBoxDemo/Info.plist;

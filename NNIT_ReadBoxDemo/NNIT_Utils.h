@@ -17,4 +17,26 @@
  *  @return <#return value description#>
  */
 - (NSString *)stringFromHexStringLK:(NSString *)hexString;
+
+
+/**
+ *  根据血糖仪型号协议换算血糖值
+ *
+ *  @param GlyxStr     <#GlyxStr description#>
+ *  @param dataStr     <#dataStr description#>
+ *  @param GlucoseType 血糖仪类型
+ *  @param DateMuArr   时间数组
+ *  @param GLYXMuArr   血糖值数组
+ */
+-(void)ConversionOfGLYXLK:(NSString *)GlyxStr
+                     time:(NSString *)dataStr
+
+            xueTangYiType:(NSString*)GlucoseType
+                DateMuArr:(NSMutableArray*)DateMuArr
+                GLYXMuArr:(NSMutableArray*)GLYXMuArr;
+
+
+//格式话小数 四舍五入类型
+- (NSString *) decimalwithFormat:(NSString *)format
+                          floatV:(float)floatV;
 @end

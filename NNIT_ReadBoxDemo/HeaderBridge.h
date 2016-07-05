@@ -17,4 +17,7 @@
 
 #import "NNIT_Utils.h"
 
+#import <CommonCrypto/CommonDigest.h>//sha1加密
+#import "LDProgressView.h"
+
 #endif /* HeaderBridge_h */
