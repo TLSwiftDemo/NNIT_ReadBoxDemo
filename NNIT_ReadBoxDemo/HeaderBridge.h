@@ -19,5 +19,6 @@
 
 #import <CommonCrypto/CommonDigest.h>//sha1加密
 #import "LDProgressView.h"
+#import "DBManager.h"
 
 #endif /* HeaderBridge_h */

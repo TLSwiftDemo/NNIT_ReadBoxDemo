@@ -123,6 +123,9 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     var progressView:LDProgressView!;
     var tipTextView:UITextView!
     
+    //MARK: - 数据库操作类
+    var dbManager_sync:DBManager!;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -132,6 +135,12 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         initData()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        swiper.StopReCord()
+        self.swiper = nil;
+    }
+    
     
     func initData() -> Void {
         
@@ -139,6 +148,8 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         swiper.delegate = self;
         //执行读取的命令
         swiper.StartReCord()
+        
+        dbManager_sync = DBManager.sharedInstance()
     }
     
     
@@ -159,6 +170,7 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         progressView.showText = true
         progressView.animate = true
         progressView.progress = 0.00;//传值用
+        
         self.view.addSubview(progressView)
         progressView.type=LDProgressSolid
         
@@ -341,7 +353,9 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         let testData:NSData =  KOALSampleUtil.nsdataOfHexString(testStr);
         
         print("HEX发送：\(testStr)")
-        swiper.emitWriteDataSend(UInt8(testData.length), data: testData)
+        if(swiper != nil){
+            swiper.emitWriteDataSend(UInt8(testData.length), data: testData)
+        }
     }
     
     
@@ -359,6 +373,19 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     }
     
     func sendaa() -> Void {
+        if (reture0X43Value!.length>3) {
+            
+            let bagNumS = reture0X43Value?.substringWithRange(NSMakeRange(1, 2))
+            
+            if(Int(bagNumS!) == bagN){
+                nTimer?.invalidate()
+                nTimer = nil
+                return
+            }
+        }
+        nTimer = NSTimer(timeInterval: 2.5, target: self, selector: #selector(delay0x43Method), userInfo: nil, repeats: true)
+        NSRunLoop.mainRunLoop().addTimer(nTimer!, forMode: NSDefaultRunLoopMode)
+        nTimer?.fire()
         
     }
     //MARK: - 第二套音频源码交互
@@ -409,6 +436,7 @@ extension ReadBoxDataController{
     /**
      最后弹框提示
      */
+    //MARK: - 最后弹框提示同步数据
     func LoopPush() -> Void {
         
         nTimer?.invalidate()
@@ -420,15 +448,18 @@ extension ReadBoxDataController{
         
         //首先查询本地数据库，如果数据为0，则提示 “未读取到数据”
         
-        //如果读取到数据，则提示 "读取到血糖仪数据%lu条，请同步上传" ，点击Alert 则上传服务器
+        dbManager_sync = DBManager.sharedInstance()
+        let array = dbManager_sync.boxVoiceAllUser()
+        if(array.count == 0){
+           showAlert("提示", msg: "未读取到新数据")
+        }else{
+            //如果读取到数据，则提示 "读取到血糖仪数据%lu条，请同步上传" ，点击Alert 则上传服务器
+            let msg = "读取到血糖仪数据\(array.count)条，请同步上传"
+            showConfirmAlert("提示", msg:msg)
+        }
         
-        showAlert("提示", msg:"读取到血糖仪数据50条，请同步上传")
     }
-    
-
-    
-    
-    
+  
 }
 
 
@@ -636,8 +667,20 @@ extension ReadBoxDataController{
          print("\n0X43 总数据====\(reture0X43Value),命令符=\(designatorWithDataStrLK),第几包=\(bagthStrLK),数据条数=\(dataNumStrLK),血糖值=\(GLYXMuArr),时间=\(DateMuArr),特殊符==\(specialStrArr)");
         
         if(designatorWithDataStrLK != nil){
+            //如果血糖值数据等于血糖录入的数组
             if(GLYXMuArr.count == DateMuArr.count){
                 //清空音频数据库中的内容
+                dbManager_sync.deleteWhithBloodVoiceModel()
+                
+                let boxModel = NNBoxModel()
+                for item in 0..<GLYXMuArr.count {
+                    boxModel.bloodVoice = Float(GLYXMuArr[item] as! NSNumber)
+                    boxModel.recordTime = DateMuArr[item] as! String;
+                    boxModel.sync = 0;
+                    dbManager_sync.insertWithBloodVoiceModel(boxModel)
+                }
+                
+                print("现在本地数据库中的所有音频数据:\(dbManager_sync.boxVoiceAllUser())")
                 self.NoticeReturnValue = ""
                 reture0X43Value = ""
             }
@@ -807,7 +850,7 @@ extension ReadBoxDataController{
         let bagNumS = analyzingRecorderStrLK.substringWithRange(NSMakeRange(1, 2))
         //0x43返回来的值
         reture0X43Value=analyzingRecorderStrLK;
-        if ((reture0X43Value as! String).isEmpty == true) {
+        if ((reture0X43Value as! String).isEmpty == false) {
             
             var bagNumber = Int(bagNumS)
             
@@ -872,6 +915,21 @@ extension ReadBoxDataController{
         
         let cancelAction = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
         alert.addAction(cancelAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    /**
+     确定提示 同步上传
+     
+     - parameter title:
+     - parameter msg:
+     */
+    func showConfirmAlert(title:String,msg:String) -> Void {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: title, style: .Default) { (Action) in
+            
+        }
+        alert.addAction(confirmAction)
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
