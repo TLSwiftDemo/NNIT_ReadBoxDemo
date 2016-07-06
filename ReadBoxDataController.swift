@@ -31,7 +31,7 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     
     /// 血糖仪类型
     var xueTangYiType:String = ""
-    
+    var selectBGType:NSString?
     
     //MARK: - 音频数据
     /// 接收硬件发回来的数据
@@ -100,7 +100,7 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     var specialStrArr = NSMutableArray();
     
     var nTimer:NSTimer?;
-    var conut:Int = 0;
+    var repeatCount:Int = 0;
     
     var totalMutableArray:NSMutableArray = NSMutableArray()
     
@@ -121,6 +121,7 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     
     /// 进度条
     var progressView:LDProgressView!;
+    var tipTextView:UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,6 +161,16 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         progressView.progress = 0.00;//传值用
         self.view.addSubview(progressView)
         progressView.type=LDProgressSolid
+        
+        rect = CGRectMake(10, CGRectGetMaxY(progressView.frame)+10, screen_width-10*2, 400)
+        tipTextView = UITextView(frame: rect)
+        tipTextView.layer.cornerRadius = 6
+        tipTextView.layer.borderColor = UIColor.redColor().CGColor
+        tipTextView.layer.borderWidth = 2
+        tipTextView.font = UIFont(name: "Courier-Bold", size: 18)
+//        52, g: 161, b: 210
+        tipTextView.textColor = UIColor(red: 52/255, green: 161/255, blue: 210/255, alpha: 1)
+        self.view.addSubview(tipTextView)
     }
     
     
@@ -167,12 +178,12 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     
     func delay0x40Method() -> Void {
         
-        self.conut += 1
+        self.repeatCount += 1
         
         self.sendData("40")
         
-        if(self.conut>3){
-          sendEnd()
+        if(self.repeatCount>3){
+            sendEnd()
             showAlert("抱歉", msg: "血糖仪连接失败，请稍后重试...")
             nTimer?.invalidate()
             nTimer = nil
@@ -180,13 +191,141 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
         }
     }
     func delay0x41Method() -> Void {
+        var typeSelect:NSString?;
+        if(selectBGType == nil ||  selectBGType == "" || !(selectBGType!.length>0)){
+            typeSelect=GlucoseType;
+        }else
+        {
+            typeSelect=selectBGType;
+        }
+       
+        self.repeatCount += 1
+        //转换血糖仪类型001——》303031
+        var meiYiWei:NSString?;
+        var GType = NSMutableString()
         
+        for index in 0..<3 {
+            meiYiWei = typeSelect?.substringWithRange(NSMakeRange(index, 1))
+            let meiInt = Int(meiYiWei! as String)
+            meiYiWei = "\(meiInt!+30)"
+        }
+
+        //转换条数050——》303530
+        var  shuzi:NSString?;
+        var numType=NSMutableString()
+        
+        for index in 0..<3 {
+            shuzi = typeSelect?.substringWithRange(NSMakeRange(index, 1))
+            let shuziInt = Int(meiYiWei! as String)
+            meiYiWei = "\(shuziInt!+30)"
+            numType.appendString(shuzi! as String)
+        }
+       
+        
+        //001 +303031       /050
+        //41 30 30 3303530
+        var send0x41Str = "41\(GType)\(numType)"
+        
+        //0x41
+        sendData(send0x41Str)
+        
+        if (self.repeatCount>3) {
+            
+            sendEnd()
+            self.performSelector(#selector(sendEnd), withObject: self, afterDelay: 1.5)
+            
+            
+            showAlert("抱歉", msg: "血糖仪并未连接成功，请重启盒子重试...")
+            
+            nTimer?.invalidate()
+            nTimer=nil
+           
+            return;
+        }
     }
     func delay0x42Method() -> Void {
+        self.repeatCount += 1
+        sendData("42")
+        
+        if (repeatCount>3) {
+            
+            sendEnd()
+            self.performSelector(#selector(sendEnd), withObject: self, afterDelay: 1.5)
+            
+            showAlert("抱歉", msg: "血糖仪连接失败，请重试")
+            
+            nTimer?.invalidate()
+            nTimer=nil
+            
+        }
         
     }
+    
+    
     func delay0x43Method() -> Void {
+        repeatCount += 1
         
+        if(self.reture0X43Value != nil){
+            if (self.reture0X43Value!.length>3) {
+                let bagNumS = reture0X43Value?.substringWithRange(NSMakeRange(1, 2))
+                
+                let aa = Int(bagNumS!)
+                
+                if (aa == bagN) {
+                    nTimer?.invalidate()
+                    nTimer = nil
+                    return;
+                }
+            }
+        }
+       
+        
+        var bagNum:NSString?;
+        var decStr:NSString?;
+        //转换包数字节--01---》3031
+        var weishu:Int = 0;
+        if (bagN<10) {//01---30 31
+            weishu=1;
+            bagNum = "0\(bagN)"
+            
+        }else if (bagN>=10)//11--3131
+        {
+            weishu=2;
+            bagNum = String(bagN)
+            
+        }
+        var meiyiwei:NSString?;
+        var GBag = NSMutableString()
+        
+        for index in 0..<2 {
+            meiyiwei = bagNum?.substringWithRange(NSMakeRange(index, 1))
+            
+            let meiInt = Int(meiyiwei! as String)
+            
+            meiyiwei = "\(meiInt!+30)"
+            
+            GBag.appendString(meiyiwei! as String)
+        }
+        
+       
+        //    NSLog(@"GBag=======//转换包数字节-----》%@",GBag);
+        
+        decStr = "43\(GBag)"
+        
+        if (repeatCount>3)
+        {
+            sendEnd()
+            self.performSelector(#selector(sendEnd), withObject: self, afterDelay: 1.5)
+            
+            
+           showAlert("抱歉", msg: "盒子连接失败，请重试……")
+            
+            nTimer?.invalidate()
+            nTimer=nil
+            return;
+        }
+        
+        sendData(decStr as! String)
     }
     
     /**
@@ -208,11 +347,11 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
     
     //MARK: -   ----发----0x44 结束指令
     func sendEnd() -> Void {
-        self.conut += 1;
+        self.repeatCount += 1;
         
         self.sendData("44")
         
-        if (self.conut>=2) {
+        if (self.repeatCount>=2) {
             nTimer?.invalidate()
             nTimer = nil
             return;
@@ -227,6 +366,8 @@ class ReadBoxDataController: UIViewController,KOALSwiperDelegate {
      第二套音频源码交互
      */
     func vioceDataInteraction() -> Void {
+        
+        self.repeatCount = 0
         
         nTimer = NSTimer(timeInterval: 1.5, target: self, selector: #selector(delay0x40Method), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(nTimer!, forMode: NSDefaultRunLoopMode)
@@ -251,12 +392,18 @@ extension ReadBoxDataController{
         
         let utils = NNIT_Utils()
         
+        
+        print("===进入循环之前analyzingRecorderStrLK:\(analyzingRecorderStrLK)")
         for item in 0..<(strUrl.length)/2 {
             
             str = strUrl.substringWithRange(NSMakeRange(item*2, 2))
             //16进制转字符串
             changeStr = utils.stringFromHexStringLK(str! as String)
+            
+            print("===转成成16进制的字符串:\(changeStr)")
             analyzingRecorderStrLK.appendString(changeStr! as String)
+            
+            print("===转成后的字符串:\(analyzingRecorderStrLK)")
         }
     }
     /**
@@ -274,6 +421,8 @@ extension ReadBoxDataController{
         //首先查询本地数据库，如果数据为0，则提示 “未读取到数据”
         
         //如果读取到数据，则提示 "读取到血糖仪数据%lu条，请同步上传" ，点击Alert 则上传服务器
+        
+        showAlert("提示", msg:"读取到血糖仪数据50条，请同步上传")
     }
     
 
@@ -309,7 +458,6 @@ extension ReadBoxDataController{
     //MARK: - 成功读取自定义数据
     func swiperDidObtianCustomData(result: String!) {
         print("成功读取自定义数据:\(result)")
-       sendData("40")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             dispatch_sync(dispatch_get_main_queue(), {
                 if(result == "284429"){
@@ -324,6 +472,8 @@ extension ReadBoxDataController{
                 
                 //接收硬件发回来的数据
                 self.noticeReturnValueLK = result
+                //每次进来都要清空命令操作符，以便下次使用
+                self.analyzingRecorderStrLK = ""
                 let range = NSMakeRange(2, self.noticeReturnValueLK!.length - 4);
                 
                 let strUrl = self.noticeReturnValueLK?.substringWithRange(range)
@@ -332,7 +482,9 @@ extension ReadBoxDataController{
                 
                 /// 解析完的字节码
                 let designator = self.analyzingRecorderStrLK.substringWithRange(NSMakeRange(0, 1));
+               
                 
+                print("执行命名操作符=>\(designator)")
                 //如果是自动识别到血糖仪
                 if(self.isIdentification == 0){
                     if(designator == "Q"){
@@ -354,6 +506,8 @@ extension ReadBoxDataController{
                     self.executeCommand284429()
                 }
                 
+                
+                self.tipTextView.text = self.showTipMsg as String
             })
         }
     }
@@ -477,19 +631,20 @@ extension ReadBoxDataController{
             specialStrArr.addObject(specialStr!)
             let utils = NNIT_Utils()
             utils.ConversionOfGLYXLK(glyxStr! as String, time: dateString as! String, xueTangYiType: GlucoseType as! String, dateMuArr: DateMuArr, GLYXMuArr: GLYXMuArr)
-            
-            if(designatorWithDataStrLK != nil){
-                if(GLYXMuArr.count == DateMuArr.count){
-                  //清空音频数据库中的内容
-                     self.NoticeReturnValue = ""
-                     reture0X43Value = ""
-                }
-            }
-            
-            self.NoticeReturnValue = ""
-            reture0X43Value = ""
-            
         }
+        
+         print("\n0X43 总数据====\(reture0X43Value),命令符=\(designatorWithDataStrLK),第几包=\(bagthStrLK),数据条数=\(dataNumStrLK),血糖值=\(GLYXMuArr),时间=\(DateMuArr),特殊符==\(specialStrArr)");
+        
+        if(designatorWithDataStrLK != nil){
+            if(GLYXMuArr.count == DateMuArr.count){
+                //清空音频数据库中的内容
+                self.NoticeReturnValue = ""
+                reture0X43Value = ""
+            }
+        }
+        
+        self.NoticeReturnValue = ""
+        reture0X43Value = ""
     }
     
     //MARK: - 执行命令
@@ -540,7 +695,7 @@ extension ReadBoxDataController{
         self.showTipMsg.appendString("手机和盒子正在通讯..\n")
         self.progressView.progress = 0.20
         
-        self.conut = 0
+        self.repeatCount = 0
         //发请求
         self.nTimer = NSTimer(timeInterval: 1.5, target: self, selector: #selector(self.delay0x41Method), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
@@ -578,7 +733,7 @@ extension ReadBoxDataController{
         progressView.progress = 0.40;//
         
         analyzingECK()
-        conut=0;
+        repeatCount=0;
        
         self.nTimer = NSTimer(timeInterval: 1.7, target: self, selector: #selector(self.delay0x42Method), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
@@ -594,7 +749,7 @@ extension ReadBoxDataController{
         nTimer = nil
         //获取解析后得到的字符串 （命令执行符号）
         reture0X42Value=analyzingRecorderStrLK;
-        showTipMsg.appendString("读取数据中........\n")
+        showTipMsg.appendString("读取数据中...\n")
         progressView.progress = 0.50;//
         //分析0x42的数据
         analyzing0x42Data()
@@ -608,7 +763,7 @@ extension ReadBoxDataController{
         }else
         {
             isRecive=false;
-            conut=0;
+            repeatCount=0;
             bagN=1;
             
             self.nTimer = NSTimer(timeInterval: 2.8, target: self, selector: #selector(self.delay0x43Method), userInfo: nil, repeats: true)
@@ -662,7 +817,7 @@ extension ReadBoxDataController{
                 nTimer = nil
                 
                 isRecive=false;
-                conut=0;
+                repeatCount=0;
                 
                 self.nTimer = NSTimer(timeInterval: 2.5, target: self, selector: #selector(self.delay0x43Method), userInfo: nil, repeats: true)
                 NSRunLoop.mainRunLoop().addTimer(self.nTimer!, forMode: NSDefaultRunLoopMode)
@@ -701,7 +856,7 @@ extension ReadBoxDataController{
                 } else {
                     bagN += 1
                     isRecive=false;
-                    conut=0;
+                    repeatCount=0;
                     
                     delay0x43Method()
                     self.performSelector(#selector(sendaa), withObject: nil, afterDelay: 1 )

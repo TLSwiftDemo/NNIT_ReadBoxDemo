@@ -170,4 +170,33 @@
     
     return  [numberFormatter stringFromNumber:[NSNumber numberWithFloat:floatV]];
 }
+
+
+
+
+#pragma mark  音频数据上传服务器将时间转换成时间戳
+-(NSString *)timeWithStr:(NSString *)str2
+{
+    //字符串转换date
+    NSString *str = str2;
+    NSLog(@"str=%@",str);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"YYYY/MM/dd HH:mm"];
+    NSDate *date = [formatter dateFromString:str];
+    NSLog(@"date=%@",date);
+    
+    //   NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate:date];
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
+    NSLog(@"localeDate=%@", localeDate);
+    
+    //  3.根据当前date转换时间戳
+    
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]];
+    NSLog(@"timeSp:%@",timeSp); //时间戳的值
+    
+    
+    return timeSp;
+}
 @end

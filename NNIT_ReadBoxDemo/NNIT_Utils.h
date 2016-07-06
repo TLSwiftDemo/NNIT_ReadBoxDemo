@@ -39,4 +39,13 @@
 //格式话小数 四舍五入类型
 - (NSString *) decimalwithFormat:(NSString *)format
                           floatV:(float)floatV;
+
+/**
+ *  音频数据上传服务器将时间转换成时间戳
+ *
+ *  @param NSString <#NSString description#>
+ *
+ *  @return <#return value description#>
+ */
+-(NSString *)timeWithStr:(NSString *)str2;
 @end
